@@ -1,10 +1,12 @@
 const sqlite3 = require("sqlite3").verbose()
 // iniciando o objeto de banco de dados
 const db = new sqlite3.Database("./src/database/database.db")
+
+module.exports = db
 //Utilizar o objeto de banco de dados para as operações
-/*db.serialize(() => {
+db.serialize(() => {
   //Criar tabela
-  db.run(`
+ /* db.run(`
     CREATE TABLE IF NOT EXISTS places (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       image TEXT,
@@ -49,7 +51,7 @@ const db = new sqlite3.Database("./src/database/database.db")
 
  
   //Deletar um dado na tabela
-  db.run(`DELETE FROM places WHERE id = ?`, [1], function(err) {
+  db.run(`DELETE FROM places WHERE id = ?`, [3], function(err) {
     if(err) {
       return console.log(err)
     }
