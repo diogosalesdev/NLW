@@ -1,26 +1,15 @@
 {
   "name": "nlw",
   "version": "1.0.0",
-  "main": "src/server.js",
-  "scripts": {
-    "start": "nodemon src/server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/diogosalesdev/NLW.git"
-  },
-  "author": "Diogo Sales",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/diogosalesdev/NLW/issues"
-  },
-  "homepage": "https://github.com/diogosalesdev/NLW#readme",
-  "dependencies": {
-    "express": "^4.17.1",
-    "nunjucks": "^3.2.1",
-    "sqlite3": "^4.2.0"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.4"
+  "description": "NLW Monorepo",
+  "main": "index.js",
+  "repository": "https://github.com/diogosalesdev/NLW.git",
+  "author": "diogosalesdev <diogosalesdev@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "nlw/*"
+    ]
   }
 }
