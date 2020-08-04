@@ -1,0 +1,6 @@
+### GET Method
+GET http://localhost:3333/users
+
+### POST Method
+POST http://localhost:3333/users
+Content-Type: application/json
