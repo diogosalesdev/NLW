@@ -1,5 +1,6 @@
 ### GET Method
-GET http://localhost:3333/
+GET http://localhost:3333/classes?week_day=1&subject=Física&time=9:00
+
 
 ### POST Method
 POST http://localhost:3333/classes
