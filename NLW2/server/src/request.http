@@ -1,6 +1,20 @@
 ### GET Method
-GET http://localhost:3333/users
+GET http://localhost:3333/
 
 ### POST Method
-POST http://localhost:3333/users
+POST http://localhost:3333/classes
 Content-Type: application/json
+
+{
+  "name": "Diogo",
+  "avatar": "https://avatars3.githubusercontent.com/u/65976669?s=460&u=f010266914f8585f92d3c678fd2a82724a59b57a&v=4",
+  "whatsapp": "81999774252",
+  "bio": "jhljhljh hglhjgljghj hglhjghljghg",
+  "subject": "Física",
+  "cost": 80,
+  "schedule": [
+    {"week_day": 1, "from": "8:00", "to": "10:00"},
+    {"week_day": 3, "from": "10:00", "to": "18:00"},
+    {"week_day": 4, "from": "8:00", "to": "14:00"}
+  ]
+}
