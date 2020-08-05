@@ -1,8 +1,10 @@
 ### GET Method
+# List classes
 GET http://localhost:3333/classes?week_day=1&subject=Física&time=9:00
 
 
 ### POST Method
+# Insert classes
 POST http://localhost:3333/classes
 Content-Type: application/json
 
@@ -18,4 +20,13 @@ Content-Type: application/json
     {"week_day": 3, "from": "10:00", "to": "18:00"},
     {"week_day": 4, "from": "8:00", "to": "14:00"}
   ]
+}
+
+### POST Method
+# Insert Connection
+POST http://localhost:3333/connections
+Content-Type: application/json
+
+{
+  "user_id": 1
 }
