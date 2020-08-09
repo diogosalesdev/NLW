@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { View, ScrollView, Text, TextInput } from 'react-native';
-import { BorderlessButton } from 'react-native-gesture-handler';
+import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
 import { Feather } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import PageHeader from '../../components/PageHeader/index';
 import TeacherItem, { Teacher } from '../../components/TeacherItem/index';
+import api from '../../services/api';
 
 import styles from './styles.ts';
-import { RectButton } from 'react-native-gesture-hundler';
-import api from '../../services/api';
 
 function TeacherList() {
   const [isFiltersVisible, setIsFiltersVisible] = useState(false);
@@ -18,8 +18,22 @@ function TeacherList() {
   const [time, setTime] = useState('');
 
   const [teachers, setTeachers] = useState([]);
+  const [favorites, setFavorites] = useState<number[]>([]);
+
+  function loadFavorites() {
+    AsyncStorage.getItem('favorites').then(res => {
+      if (res) {
+        const favoritedTeachers = JSON.parse(res);
+        const favoritedTeachersIds = favoritedTeachers.map((teacher: Teacher) => {
+          return teacher.id;
+        });
+        setFavorites(favoritedTeachersIds);
+      }
+    });
+  }
 
   async function handleFiltersSubmit() {
+    loadFavorites();
     const res = await api.get('classes', {
       params: {
         subject,
@@ -84,14 +98,14 @@ function TeacherList() {
       )}
       </PageHeader>
       <ScrollView style={styles.teacherList} contentContainerStyle={{paddingHorizontal: 16, paddingBottom: 16}} >
-       {teachers.map(teacher: Teacher => <TeacherItem key={teacher.id} teacher={teacher} />)}
-       
-       <TeacherItem />
-       <TeacherItem />
-       <TeacherItem />
-       <TeacherItem />
-       <TeacherItem />
-      </ScrollView>
+       {teachers.map(teacher: Teacher => {
+         return (
+          <TeacherItem 
+            key={teacher.id} 
+            teacher={teacher} 
+            favorited={favorites.includes(teacher.id)}
+          />);
+        })}
     </View>
   );
 }
