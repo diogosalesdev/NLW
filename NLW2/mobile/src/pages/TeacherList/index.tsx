@@ -31,6 +31,10 @@ function TeacherList() {
       }
     });
   }
+  
+  useFocusEffect(
+    React.useCallback(() => {loadFavorites();}, [])
+  );
 
   async function handleFiltersSubmit() {
     loadFavorites();
